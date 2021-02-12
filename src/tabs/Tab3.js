@@ -6,9 +6,10 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Tax from '../Surrogates/Tax';
-import Guarantor from '../Surrogates/Guarantor'
-import Bills from '../Surrogates/Bills'
-import Electricity from '../Surrogates/Electricity'
+import Guarantor from '../Surrogates/Guarantor';
+import Bills from '../Surrogates/Bills';
+import Electricity from '../Surrogates/Electricity';
+import ReactSpeedometer from "react-d3-speedometer";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -103,7 +104,7 @@ export default function Tab3({data}) {
         Item Seven
       </TabPanel>
       <TabPanel value={value} index={8}>
-        Item Seven
+        <ReactSpeedometer />
       </TabPanel>
     </div>
   );

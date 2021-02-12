@@ -82,8 +82,9 @@ export default function FeedCard({ data }) {
           <Tab label="Basic Details" {...a11yProps(0)} />
           <Tab label="Bank Accounts" {...a11yProps(1)} />
           <Tab label="Surrogates" {...a11yProps(2)} />
-          <Tab label="Previous Loan Applications" {...a11yProps(3)} />
-          <Tab label="Analysis" icon={<BarChartIcon />} {...a11yProps(4)} />
+          <Tab label="Shop" {...a11yProps(3)} />
+          <Tab label="Previous Loan Applications" {...a11yProps(4)} />
+          <Tab label="Analysis" icon={<BarChartIcon />} {...a11yProps(5)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -96,9 +97,12 @@ export default function FeedCard({ data }) {
         <Tab3 data={data}/>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <Tab5 data={data.allLoans} />
+        <Tab3 data={data}/>
       </TabPanel>
       <TabPanel value={value} index={4}>
+        <Tab5 data={data.allLoans} />
+      </TabPanel>
+      <TabPanel value={value} index={5}>
         <Demo />
       </TabPanel>
     </div>
