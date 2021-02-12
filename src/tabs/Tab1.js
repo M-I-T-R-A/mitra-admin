@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Tab1({ data }) {
     const classes = useStyles();
     let text;
-    if (data.haveCurrentLoan) {
+    if (data&&data.haveCurrentLoan) {
         text = <p>having loan</p>;
     } else {
         text = <p>Currently no loan is being sactioned or being applied.</p>;
