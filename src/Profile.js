@@ -15,7 +15,7 @@ function Profile({ match }) {
     }, [])
 
     const getCustomers = async () => {
-        const res = await fetch(`http://localhost:5000/admin/customer/${id}`)
+        const res = await fetch(`http://20.198.81.29:5000/admin/customer/${id}`)
         const data = await res.json();
         console.log(data);
         setCustomer(data);

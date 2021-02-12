@@ -45,6 +45,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(3),
   },
+  photo: {
+    height: 150,
+    width: 150
+  }
 }));
 
 export default function SideBar() {
@@ -73,10 +77,10 @@ export default function SideBar() {
         <div className={classes.toolbar} />
         <List>
           <ListItem >
-            <img src={require('./icons.png')} />
+            <img src={'./icons.png'} className = {classes.photo} />
           </ListItem>
           <ListItem >
-            <ListItemText primary="Welcome to Mitra"/>
+            <b>Welcome to Mitra Admin</b>
           </ListItem>
           <ListItem button key="Dashboard" component={Link} to="/customers">
             <ListItemIcon>
