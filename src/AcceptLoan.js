@@ -76,7 +76,7 @@ function AcceptLoan({ match }) {
     };
 
     const submitLoanApplication = () => {
-        axios.post(`http://localhost:5000/admin/customer/approve/${id}`, { approvedLoan }) //'http://localhost:8000' 'https://bharatdebtrelief-backend.herokuapp.com'
+        axios.post(`http://20.198.81.29:5000/admin/customer/approve/${id}`, { approvedLoan }) //'http://localhost:8000' 'https://bharatdebtrelief-backend.herokuapp.com'
             .then(response => {
                 console.log(response);
             })
