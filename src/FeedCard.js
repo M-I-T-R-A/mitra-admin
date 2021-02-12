@@ -99,7 +99,7 @@ export default function FeedCard({ data }) {
         <Tab3 data={data}/>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <Tab4 data={data}/>
+        <Tab4 data={data.shop}/>
       </TabPanel>
       <TabPanel value={value} index={4}>
         <Tab5 data={data.allLoans} />
