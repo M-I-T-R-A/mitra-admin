@@ -10,6 +10,7 @@ import Guarantor from '../Surrogates/Guarantor';
 import Bills from '../Surrogates/Bills';
 import Electricity from '../Surrogates/Electricity';
 import ReactSpeedometer from "react-d3-speedometer";
+import CibilScore from '../Surrogates/Cibil';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -92,7 +93,7 @@ export default function Tab3({data}) {
         <Electricity data={data} />
       </TabPanel>
       <TabPanel value={value} index={4}>
-        Item Five
+        <CibilScore data={data} />
       </TabPanel>
       <TabPanel value={value} index={5}>
         Item Six

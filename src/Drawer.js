@@ -9,11 +9,12 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import AddBlog from './AddBlog';
-import Feeds from './Feeds';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
 import AllCustomers from './AllCustomers';
-import PendingLoans from './PendingLoans';
 import LoanApplications from './LoanApplications';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+
 import {
   BrowserRouter as Router,
   Link,
@@ -71,10 +72,22 @@ export default function SideBar() {
       >
         <div className={classes.toolbar} />
         <List>
+          <ListItem >
+            <img src={require('./icons.png')} />
+          </ListItem>
+          <ListItem >
+            <ListItemText primary="Welcome to Mitra"/>
+          </ListItem>
           <ListItem button key="Dashboard" component={Link} to="/customers">
+            <ListItemIcon>
+              <DashboardIcon />
+            </ListItemIcon>
             <ListItemText primary="Dashboard"/>
           </ListItem>
           <ListItem button key="Loan Applications"  component={Link} to="/applications">
+            <ListItemIcon>
+              <AccountBalanceIcon />
+            </ListItemIcon>
             <ListItemText primary="Loan Applications" />
             <Link to="/applications" />
           </ListItem>
