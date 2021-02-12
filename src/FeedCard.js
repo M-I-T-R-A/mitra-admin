@@ -11,7 +11,6 @@ import Tab2 from './tabs/Tab2'
 import Tab5 from './tabs/Tab5'
 import Tab3 from './tabs/Tab3'
 import Tab4 from './tabs/Tab4'
-import Demo from './Charts/Demo'
 import BarChartIcon from '@material-ui/icons/BarChart';
 import Tab6 from './tabs/Tab6';
 
@@ -99,7 +98,7 @@ export default function FeedCard({ data }) {
         <Tab3 data={data}/>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <Tab4 data={data}/>
+        <Tab4 data={data.shop}/>
       </TabPanel>
       <TabPanel value={value} index={4}>
         <Tab5 data={data.allLoans} />
