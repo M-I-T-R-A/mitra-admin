@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Typography, CircularProgress } from '@material-ui/core';
-import FeedCard from './FeedCard';
+import DashboardFeed from './DashboardFeed';
 
 function AllCustomers(){
     const [customers, setCustomers] = useState(null);
@@ -27,7 +27,7 @@ function AllCustomers(){
                     Customers
                 </Typography>
                 {customers.map(customer => <div>
-                    <FeedCard
+                    <DashboardFeed
                         person={customer}
                         /*title={blog.title}
                         publisher={blog.publisher}

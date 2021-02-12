@@ -10,8 +10,10 @@ import Tab1 from './tabs/Tab1'
 import Tab2 from './tabs/Tab2'
 import Tab5 from './tabs/Tab5'
 import Tab3 from './tabs/Tab3'
+import Tab4 from './tabs/Tab4'
 import Demo from './Charts/Demo'
 import BarChartIcon from '@material-ui/icons/BarChart';
+import Tab6 from './tabs/Tab6';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -97,13 +99,13 @@ export default function FeedCard({ data }) {
         <Tab3 data={data}/>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <Tab3 data={data}/>
+        <Tab4 data={data}/>
       </TabPanel>
       <TabPanel value={value} index={4}>
         <Tab5 data={data.allLoans} />
       </TabPanel>
       <TabPanel value={value} index={5}>
-        <Demo />
+        <Tab6 data={data} />
       </TabPanel>
     </div>
   );

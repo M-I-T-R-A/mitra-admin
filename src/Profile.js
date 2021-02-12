@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Typography, CircularProgress } from '@material-ui/core';
 import FeedCard from './FeedCard';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 function Profile({ match }) {
     const {
@@ -20,22 +22,34 @@ function Profile({ match }) {
     }
 
     if (!customer) return (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around', height: '100vh' }}>
+        <div style={{ display: 'inline', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around', height: '100vh' }}>
             <CircularProgress />
         </div>
     )
     else {
         return (
-
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around' }}>
-                <Typography variant="h4" gutterBottom>
-                    Profile
-                </Typography>
-
-                <FeedCard
-                    data={customer}
-                />
-            </div>
+            <div>
+                <div style={{ display: 'inline', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around' }}>
+                    <Grid container spacing={3}>
+                        <Grid item xs={12}>
+                            <Typography variant="h4" gutterBottom>
+                                Profile
+                    
+                            <Button variant="contained" color="green">
+                                Consider
+                    </Button>
+                            <Button variant="contained" color="red">
+                                Reject
+                     </Button></Typography>
+                        </Grid>
+                    </Grid>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around' }}>
+                    <FeedCard
+                        data={customer}
+                    />
+                </div>
+            </div >
         )
     }
 }
