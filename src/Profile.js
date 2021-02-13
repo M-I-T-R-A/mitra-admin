@@ -21,18 +21,18 @@ function Profile({ match }) {
     }, [])
 
     const getCustomers = async () => {
-        const res = await fetch(`http://localhost:5000/admin/customer/${id}`)
+        const res = await fetch(`http://20.198.81.29:5000/admin/customer/${id}`)
         const data = await res.json();
         console.log(data);
         setCustomer(data);
-        const res2 = await fetch(`http://localhost:5000/customer/loan/instant/current/${id}`);
+        const res2 = await fetch(`http://20.198.81.29:5000/customer/loan/instant/current/${id}`);
         const data2 = await res2.json();
         console.log(data2);
         setLoanId(data2.id);
     }
 
     const reject = async () => {
-        const res2 = await fetch(`http://localhost:5000/admin/customer/reject/${loanId}`)
+        const res2 = await fetch(`http://20.198.81.29:5000/admin/customer/reject/${loanId}`)
     }
 
     if (!customer) return (

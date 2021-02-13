@@ -9,7 +9,7 @@ function AllCustomers(){
     }, [])
 
     const getCustomers = async () => {
-        const res = await fetch('http://localhost:5000/admin/customer')
+        const res = await fetch('http://20.198.81.29:5000/admin/customer')
         const data = await res.json();
         console.log(data);
         setCustomers(data);
