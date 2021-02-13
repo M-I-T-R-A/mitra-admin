@@ -102,6 +102,7 @@ export default function SideBar() {
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <Switch>
+            <IndexRoute component={AllCustomers} />
             <Route path="/customers" component={AllCustomers}></Route>
             <Route path="/applications" component={LoanApplications}></Route>
           </Switch>
