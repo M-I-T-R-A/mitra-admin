@@ -50,8 +50,8 @@ function AcceptLoan({ match }) {
         approvedAmount: 0.0,
         rateOfInterest: 0.0,
         timeFactor: 0.0,
-        startDate: React.useState(new Date('2014-08-18T21:11:54')),
-        endDate: React.useState(new Date('2014-08-18T21:11:54'))
+        startDate: "2000-10-10",
+        endDate: "2000-10-10"
     });
 
     const handleStartDateChange = (date) => {
@@ -73,10 +73,11 @@ function AcceptLoan({ match }) {
             ...approvedLoan,
             [e.target.name]: e.target.value
         });
+        console.log(approvedLoan);
     };
 
     const submitLoanApplication = () => {
-        axios.post(`http://localhost:5000/admin/customer/approve/${id}`, { approvedLoan }) //'http://localhost:8000' 'https://bharatdebtrelief-backend.herokuapp.com'
+        axios.post(`http://localhost:5000/admin/customer/approve/${id}`, approvedLoan) //'http://localhost:8000' 'https://bharatdebtrelief-backend.herokuapp.com'
             .then(response => {
                 console.log(response);
             })
@@ -92,15 +93,16 @@ function AcceptLoan({ match }) {
                     <Grid item xs={12}>
                         <Paper className={classes.paper}>
                             <h3>Loan Grant Form</h3>
-                            <form className={classes.root} noValidate autoComplete="off" onSubmit={submitLoanApplication}>
-                                <TextField id="outlined-basic" label="Approved Amount" variant="outlined" name="approvedAmount" />
-                                <br></br><br></br><TextField id="outlined-basic" label="Rate of Interest" variant="outlined" name="rateOfInterest" />
-                                <br></br><br></br><TextField id="outlined-basic" label="Time factor" variant="outlined" name="timeFactor" />
+                            <form className={classes.root} noValidate autoComplete="off" >
+                                <TextField id="outlined-basic" label="Approved Amount" variant="outlined" name="approvedAmount" onChange={updateField}/>
+                                <br></br><br></br><TextField id="outlined-basic" label="Rate of Interest" variant="outlined" name="rateOfInterest"  onChange={updateField}/>
+                                <br></br><br></br><TextField id="outlined-basic" label="Time factor" variant="outlined" name="timeFactor"  onChange={updateField}/>
                                 <br></br><br></br><TextField
                                     id="datetime-local"
                                     label="Start Date"
-                                    type="datetime-local"
-                                    defaultValue="2017-05-24T10:30"
+                                    type="date"
+                                    onChange={updateField}
+                                    defaultValue="2021-01-01"
                                     name="startDate"
                                     className={classes.textField}
                                     InputLabelProps={{
@@ -110,15 +112,16 @@ function AcceptLoan({ match }) {
                                 <br></br><br></br><TextField
                                     id="datetime-local"
                                     label="End Date"
-                                    type="datetime-local"
-                                    defaultValue="2017-05-24T10:30"
+                                    type="date"
+                                    onChange={updateField}
+                                    defaultValue="2021-01-01"
                                     name="endDate"
                                     className={classes.textField}
                                     InputLabelProps={{
                                         shrink: true,
                                     }}
                                 /><br></br><br></br>
-                                <Button type="submit" variant="contained" color="primary">Approve</Button>
+                                <Button type="submit" variant="contained" color="primary" onClick={submitLoanApplication} component={Link} to={`/customers`}>Approve</Button>
                             </form>
                         </Paper>
                     </Grid>
