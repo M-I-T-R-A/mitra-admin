@@ -102,7 +102,7 @@ export default function SideBar() {
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <Switch>
-            <Route path = '/' component={AllCustomers} />
+            //<Route path = '/' component={AllCustomers} />
             <Route path="/customers" component={AllCustomers}></Route>
             <Route path="/applications" component={LoanApplications}></Route>
           </Switch>
