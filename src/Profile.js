@@ -3,17 +3,38 @@ import { Typography, CircularProgress } from '@material-ui/core';
 import FeedCard from './FeedCard';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import SmartModal from './SmartModal'
 import {
     Link
-  } from 'react-router-dom';
+} from 'react-router-dom';
+import { red } from '@material-ui/core/colors';
+
+const styles = theme => ({
+
+    containedRed: {
+        color: theme.palette.getContrastText(red[500]),
+        backgroundColor: red[500],
+        "&:hover": {
+          backgroundColor: red[700],
+          // Reset on touch devices, it doesn't add specificity
+          "@media (hover: none)": {
+            backgroundColor: red[500]
+          }
+        }
+      }
+  });
+
 
 function Profile({ match }) {
     const {
         params: { id }
     } = match;
 
+    const classes = styles;
+
     const [customer, setCustomer] = useState(null);
     const [loanId, setLoanId] = useState(null);
+    const [demandedAmount, setDemandedAMount] = useState(null);
 
 
     useEffect(() => {
@@ -29,6 +50,7 @@ function Profile({ match }) {
         const data2 = await res2.json();
         console.log(data2);
         setLoanId(data2.id);
+        setDemandedAMount(data2.demandedAmount);
     }
 
     const reject = async () => {
@@ -47,9 +69,17 @@ function Profile({ match }) {
                     <Grid container spacing={3}>
                         <Grid item xs={12}>
                             <Typography variant="h4" gutterBottom>
-                                <p>Profile</p>
-                                <Button variant="contained" color="primary" component={Link} to={`/applications/accept/${loanId}`}>Consider</Button>
-                                <Button variant="contained" color="red" component={Link} to={`/applications`} onClick={reject}>Reject</Button>
+                                <h4><b>Profile</b></h4>
+                                <h6><b>Requested Amount: {demandedAmount}</b></h6>
+                                <div>
+                                    <span style={{padding: "5px"}}><Button variant="contained" color="primary" component={Link} to={`/applications/accept/${loanId}`}>Consider</Button></span>
+                                    <span style={{padding: "5px"}}><Button variant="contained" className={classes.containedRed} component={Link} to={`/applications`} onClick={reject}>Reject</Button></span>
+                                </div>
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={12} style={{ alignContent: "left" }}>
+                            <Typography variant="h4" gutterBottom>
+                                <SmartModal amount={demandedAmount}/>
                             </Typography>
                         </Grid>
                     </Grid>
