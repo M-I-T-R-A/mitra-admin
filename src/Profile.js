@@ -88,7 +88,7 @@ function Profile({ match }) {
                     </Grid>
                     <Grid item xs={12} style={{ alignContent: "left" }}>
                         <Typography variant="h4" gutterBottom>
-                            <SmartModal amount={demandedAmount} />
+                            <SmartModal amount={demandedAmount} id={id}/>
                         </Typography>
                     </Grid>
                 </div>

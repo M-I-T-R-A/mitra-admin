@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -19,17 +19,27 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SmartModal({amount}) {
+export default function SmartModal({amount, id}) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
+    const [suggestedAmount, setAmount] = React.useState(null);
 
-    const handleOpen = () => {
+    const handleOpen = async () => {
+        await getSuggestedAmount();
+        console.log(id);
         setOpen(true);
     };
 
-    const handleClose = () => {
+    const handleClose = async () => {
         setOpen(false);
     };
+
+    const getSuggestedAmount = async () => {
+        const res = await fetch(`http://20.198.81.29:5003/getLoanAmount/${id}`)
+        const data = await res.json();
+        console.log(data);
+        setAmount(data.predicted_loan_amount);
+    }
 
     return (
         <div>
@@ -54,7 +64,7 @@ export default function SmartModal({amount}) {
                             <h2 id="transition-modal-title">Smart Assist</h2>
                             <h5 id="transition-modal-description">Intelligent Loan Amount Prediction</h5>
                             <p id="transition-modal-description">Requested Amount: {amount}</p>
-                            <p id="transition-modal-description">Smart Assist Suggestion: 0</p>
+                            <p id="transition-modal-description">Smart Assist Suggestion: {suggestedAmount}</p>
                         </center>
                     </div>
                 </Fade>
