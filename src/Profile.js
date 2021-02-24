@@ -15,14 +15,14 @@ const styles = theme => ({
         color: theme.palette.getContrastText(red[500]),
         backgroundColor: red[500],
         "&:hover": {
-          backgroundColor: red[700],
-          // Reset on touch devices, it doesn't add specificity
-          "@media (hover: none)": {
-            backgroundColor: red[500]
-          }
+            backgroundColor: red[700],
+            // Reset on touch devices, it doesn't add specificity
+            "@media (hover: none)": {
+                backgroundColor: red[500]
+            }
         }
-      }
-  });
+    }
+});
 
 
 function Profile({ match }) {
@@ -70,18 +70,26 @@ function Profile({ match }) {
                         <Grid item xs={12}>
                             <Typography variant="h4" gutterBottom>
                                 <h4><b>Profile</b></h4>
-                                <h6><b>Requested Amount: {demandedAmount}</b></h6>
-                                <div>
-                                    <span style={{padding: "5px"}}><Button variant="contained" color="primary" component={Link} to={`/applications/accept/${loanId}`}>Consider</Button></span>
-                                    <span style={{padding: "5px"}}><Button variant="contained" className={classes.containedRed} component={Link} to={`/applications`} onClick={reject}>Reject</Button></span>
-                                </div>
                             </Typography>
                         </Grid>
-                        <Grid item xs={12} style={{ alignContent: "left" }}>
-                            <Typography variant="h4" gutterBottom>
-                                <SmartModal amount={demandedAmount}/>
-                            </Typography>
+                    </Grid>
+                    <Grid container>
+                    <Grid container spacing={0}>
+                        <Grid item xs={6}>
+                            <h2><b>Requested Amount: {demandedAmount}</b></h2>
                         </Grid>
+                        <Grid item xs={6}>
+                            <div>
+                                <span style={{ padding: "5px" }}><Button variant="contained" color="primary" component={Link} to={`/applications/accept/${loanId}`}>Consider</Button></span>
+                                <span style={{ padding: "5px" }}><Button variant="contained" className={classes.containedRed} component={Link} to={`/applications`} onClick={reject}>Reject</Button></span>
+                            </div>
+                        </Grid>
+                    </Grid>
+                    </Grid>
+                    <Grid item xs={12} style={{ alignContent: "left" }}>
+                        <Typography variant="h4" gutterBottom>
+                            <SmartModal amount={demandedAmount} />
+                        </Typography>
                     </Grid>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around' }}>

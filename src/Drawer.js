@@ -82,7 +82,7 @@ export default function SideBar() {
           <ListItem >
             <b>Welcome to Mitra Admin</b>
           </ListItem>
-          <ListItem button key="Dashboard" component={Link} to="/customers">
+          <ListItem button key="Dashboard" component={Link} to="/">
             <ListItemIcon>
               <DashboardIcon />
             </ListItemIcon>
@@ -102,8 +102,8 @@ export default function SideBar() {
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <Switch>
-            <Route path="/customers" component={AllCustomers}></Route>
             <Route path="/applications" component={LoanApplications}></Route>
+            <Route path="/" component={AllCustomers}></Route>
           </Switch>
         </main>
     </div>

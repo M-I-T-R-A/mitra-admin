@@ -9,7 +9,7 @@ const data = {
       type: 'bar',
       label: 'Profit (in Thousands)',
       backgroundColor: 'rgb(75, 192, 192)',
-      data: [10, 25, 45, 32, 34, 44 ],
+      data: [10, 25, 45, 32, 34, 4 ],
       borderColor: 'white',
       borderWidth: 2,
     },
