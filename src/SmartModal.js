@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SmartModal({amount, id}) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-    const [suggestedAmount, setAmount] = React.useState(null);
+    const [response, setResponse] = React.useState({"predicted_loan_amount": 0, "message": ""});
 
     const handleOpen = async () => {
         await getSuggestedAmount();
@@ -38,7 +38,7 @@ export default function SmartModal({amount, id}) {
         const res = await fetch(`http://20.198.81.29:5003/getLoanAmount/${id}`)
         const data = await res.json();
         console.log(data);
-        setAmount(data.predicted_loan_amount);
+        setResponse(data);
     }
 
     return (
@@ -64,7 +64,8 @@ export default function SmartModal({amount, id}) {
                             <h2 id="transition-modal-title">Smart Assist</h2>
                             <h5 id="transition-modal-description">Intelligent Loan Amount Prediction</h5>
                             <p id="transition-modal-description">Requested Amount: {amount}</p>
-                            <p id="transition-modal-description">Smart Assist Suggestion: {suggestedAmount}</p>
+                            <p id="transition-modal-description">Smart Assist Suggestion: {response.predicted_loan_amount} (Allowable Upper Bound)</p>
+                            <p id="transition-modal-description">Smart Assist Message: {response.message}</p>
                         </center>
                     </div>
                 </Fade>
